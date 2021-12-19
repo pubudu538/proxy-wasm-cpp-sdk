@@ -18,10 +18,10 @@ public:
   FilterHeadersStatus onRequestHeaders(uint32_t headers, bool end_of_stream) override;
   void onDone() override;
 
-private:
-  inline ExampleRootContext* rootContext() {
-    return dynamic_cast<ExampleRootContext*>(this->root());
-  }
+// private:
+//   inline ExampleRootContext* rootContext() {
+//     return dynamic_cast<ExampleRootContext*>(this->root());
+//   }
 };
 static RegisterContextFactory register_ExampleContext(CONTEXT_FACTORY(ExampleContext),
                                                         ROOT_FACTORY(ExampleRootContext));
