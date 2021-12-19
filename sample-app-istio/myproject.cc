@@ -8,7 +8,6 @@
 
 using google::protobuf::util::JsonParseOptions;
 
-using echo::Config;
 
 class ExampleRootContext : public RootContext {
 public:
