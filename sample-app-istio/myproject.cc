@@ -2,6 +2,13 @@
 #include <unordered_map>
 
 #include "proxy_wasm_intrinsics.h"
+#include "extensions/common/wasm/json_util.h"
+
+using ::nlohmann::json;
+using ::Wasm::Common::JsonArrayIterate;
+using ::Wasm::Common::JsonGetField;
+using ::Wasm::Common::JsonObjectIterate;
+using ::Wasm::Common::JsonValueAs;
 
 class ExampleRootContext : public RootContext {
 public:
