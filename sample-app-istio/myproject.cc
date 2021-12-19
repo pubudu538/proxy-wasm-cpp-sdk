@@ -1,7 +1,12 @@
 #include <string>
+#include <string_view>
 #include <unordered_map>
 
 #include "proxy_wasm_intrinsics.h"
+
+#include "google/protobuf/util/json_util.h"
+
+using google::protobuf::util::JsonParseOptions;
 
 using echo::Config;
 
