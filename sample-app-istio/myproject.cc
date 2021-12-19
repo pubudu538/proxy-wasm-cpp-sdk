@@ -2,13 +2,8 @@
 #include <unordered_map>
 
 #include "proxy_wasm_intrinsics.h"
-#include "extensions/common/wasm/json_util.h"
 
-using ::nlohmann::json;
-using ::Wasm::Common::JsonArrayIterate;
-using ::Wasm::Common::JsonGetField;
-using ::Wasm::Common::JsonObjectIterate;
-using ::Wasm::Common::JsonValueAs;
+// using ::nlohmann::json;
 
 class ExampleRootContext : public RootContext {
 public:
@@ -56,16 +51,20 @@ bool ExampleRootContext::onConfigure(size_t config_size) {
 
   auto configuration_data =
       getBufferBytes(WasmBufferType::PluginConfiguration, 0, config_size);
+
+
   // Parse configuration JSON string.
-  auto result = ::Wasm::Common::JsonParse(configuration_data->view());
-  if (!result.has_value()) {
-    LOG_WARN(absl::StrCat("cannot parse plugin configuration JSON string: ",
-                          configuration_data->view()));
-    return false;
-  } else {
-    logInfo("onConfigure..........$$$$$");
-    LOG_INFO(
+  // auto result = ::Wasm::Common::JsonParse(configuration_data->view());
+  // if (!result.has_value()) {
+  //   LOG_WARN(absl::StrCat("cannot parse plugin configuration JSON string: ",
+  //                         configuration_data->view()));
+  //   return false;
+  // } else {
+  //   logInfo("onConfigure..........$$$$$");
+  //   LOG_INFO(
+  //       absl::StrCat("can parse plugin configuration JSON string: ", configuration_data->view()));
+  // }
+  LOG_INFO(
         absl::StrCat("can parse plugin configuration JSON string: ", configuration_data->view()));
-  }
   return true;
 }
