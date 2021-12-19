@@ -42,6 +42,7 @@ bool ExampleRootContext::onStart(size_t) {
 
 bool ExampleRootContext::onConfigure(size_t) {
   LOG_INFO("onConfigure");
+  logInfo("onConfigure");
   proxy_set_tick_period_milliseconds(1000); // 1 sec
   return true;
 }
@@ -51,7 +52,9 @@ void ExampleRootContext::onTick() { LOG_TRACE("onTick"); }
 void ExampleContext::onCreate() { LOG_WARN(std::string("onCreate " + std::to_string(id()))); }
 
 FilterHeadersStatus ExampleContext::onRequestHeaders(uint32_t, bool) {
+  logInfo("ssssss");
   LOG_INFO(std::string("onRequestHeaders ") + std::to_string(id()));
+  logInfo(std::string("onRequestHeaders ") + std::to_string(id()));
   auto result = getRequestHeaderPairs();
   auto pairs = result->pairs();
   LOG_INFO(std::string("headers: ") + std::to_string(pairs.size()));
