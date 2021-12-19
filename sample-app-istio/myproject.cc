@@ -64,6 +64,6 @@ bool ExampleRootContext::onConfigure(size_t config_size) {
   //       configuration_data->view()));
   // }
   logInfo("onConfigure.......");
-  LOG_INFO(configuration_data->view());
+  logInfo(configuration_data->view());
   return true;
 }
