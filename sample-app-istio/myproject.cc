@@ -1,6 +1,7 @@
 #include <string>
 #include <unordered_map>
 
+#include "absl/strings/str_cat.h"
 #include "proxy_wasm_intrinsics.h"
 
 // using ::nlohmann::json;
@@ -49,9 +50,7 @@ bool ExampleRootContext::onConfigure(size_t config_size) {
   logInfo("onConfigure");
   // proxy_set_tick_period_milliseconds(1000); // 1 sec
 
-  auto configuration_data =
-      getBufferBytes(WasmBufferType::PluginConfiguration, 0, config_size);
-
+  auto configuration_data = getBufferBytes(WasmBufferType::PluginConfiguration, 0, config_size);
 
   // Parse configuration JSON string.
   // auto result = ::Wasm::Common::JsonParse(configuration_data->view());
@@ -62,9 +61,10 @@ bool ExampleRootContext::onConfigure(size_t config_size) {
   // } else {
   //   logInfo("onConfigure..........$$$$$");
   //   LOG_INFO(
-  //       absl::StrCat("can parse plugin configuration JSON string: ", configuration_data->view()));
+  //       absl::StrCat("can parse plugin configuration JSON string: ",
+  //       configuration_data->view()));
   // }
   LOG_INFO(
-        absl::StrCat("can parse plugin configuration JSON string: ", configuration_data->view()));
+      absl::StrCat("can parse plugin configuration JSON string: ", configuration_data->view()));
   return true;
 }
