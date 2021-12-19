@@ -8,6 +8,7 @@ public:
   explicit ExampleRootContext(uint32_t id, std::string_view root_id) : RootContext(id, root_id) {}
 
   bool onStart(size_t) override;
+  bool onConfigure(size_t) override;
 };
 
 class ExampleContext : public Context {
@@ -30,6 +31,12 @@ FilterHeadersStatus ExampleContext::onRequestHeaders(uint32_t headers, bool end_
 void ExampleContext::onDone() { logInfo("onDone " + std::to_string(id())); }
 
 bool ExampleRootContext::onStart(size_t) {
-  LOG_TRACE("onStart");
+  logInfo("onStart");
+  return true;
+}
+
+bool ExampleRootContext::onConfigure(size_t) {
+  logInfo("onConfigure");
+  proxy_set_tick_period_milliseconds(1000); // 1 sec
   return true;
 }
