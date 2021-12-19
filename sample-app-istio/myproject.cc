@@ -1,5 +1,3 @@
-
-
 #include <string>
 #include <string_view>
 #include <unordered_map>
@@ -27,6 +25,11 @@ public:
   void onDone() override;
   void onLog() override;
   void onDelete() override;
+
+private:
+ inline ExampleRootContext* rootContext() {
+  return dynamic_cast<ExampleRootContext*>(this->root());
+}
 };
 static RegisterContextFactory register_ExampleContext(CONTEXT_FACTORY(ExampleContext),
                                                       ROOT_FACTORY(ExampleRootContext),
