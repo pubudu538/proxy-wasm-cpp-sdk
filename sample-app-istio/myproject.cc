@@ -23,7 +23,9 @@ private:
     return dynamic_cast<ExampleRootContext*>(this->root());
   }
 };
-static RegisterContextFactory register_ExampleContext(CONTEXT_FACTORY(ExampleContext));
+static RegisterContextFactory register_ExampleContext(CONTEXT_FACTORY(ExampleContext),
+                                                        ROOT_FACTORY(ExampleRootContext));
+
 
 FilterHeadersStatus ExampleContext::onRequestHeaders(uint32_t headers, bool end_of_stream) {
   logInfo(std::string("onRequestHeaders ") + std::to_string(id()));
