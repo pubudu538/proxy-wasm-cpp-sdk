@@ -79,7 +79,7 @@ FilterHeadersStatus ExampleContext::onResponseHeaders(uint32_t, bool) {
   for (auto &p : pairs) {
     LOG_INFO(std::string(p.first) + std::string(" -> ") + std::string(p.second));
   }
-  addResponseHeader("X-Wasm-custom", "FOO");
+  addResponseHeader("X-Wasmd-custom", "FOO");
   replaceResponseHeader("content-type", "text/plain; charset=utf-8");
   removeResponseHeader("content-length");
   return FilterHeadersStatus::Continue;
