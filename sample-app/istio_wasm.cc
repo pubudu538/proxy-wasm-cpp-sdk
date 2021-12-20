@@ -61,14 +61,14 @@ bool ExampleRootContext::onConfigure(size_t config_size) {
 
 
   // Parse configuration JSON string.
-  // auto result = ::Wasm::Common::JsonParse(configuration_data->view());
-  // if (!result.has_value()) {
-  //   logWarn("cannot parse plugin configuration JSON string: ",
-  //                         configuration_data->view()));
-  //   return false;
-  // } else {
-  //   logInfo("onConfigure....... - Parsing done@@@!!");
-  // }
+  auto result = ::Wasm::Common::JsonParse(configuration_data->view());
+  if (!result.has_value()) {
+    logWarn("cannot parse plugin configuration JSON string: ",
+                          configuration_data->view()));
+    return false;
+  } else {
+    logInfo("onConfigure....... - Parsing done@@@!!");
+  }
 
 
   return true;
